@@ -1,0 +1,195 @@
+import streamlit as st
+import pandas as pd
+import numpy as np
+import plotly.graph_objects as go
+
+
+
+def plot_timeseries_plotly_dark(df, column_name):
+    """
+    Plot the values of a column against the date using Plotly with a dark theme.
+    
+    Parameters:
+    - df: DataFrame containing the data
+    - column_name: Name of the column to plot
+    """
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=df['Datetime'], y=df[column_name], mode='lines', name=column_name))
+    fig.update_layout(title=f'Timeseries Plot of {column_name}', xaxis_title='Date', yaxis_title=column_name,
+                      template="plotly_dark")
+    return fig
+
+def plot_histogram_plotly_dark(df, column_name):
+    """
+    Plot a histogram of the values in a column using Plotly with a dark theme.
+    
+    Parameters:
+    - df: DataFrame containing the data
+    - column_name: Name of the column to plot
+    """
+    fig = go.Figure()
+    fig.add_trace(go.Histogram(x=df[column_name].dropna(), name=column_name))
+    fig.update_layout(title=f'Histogram of {column_name}', xaxis_title=column_name, yaxis_title='Frequency',
+                      template="plotly_dark")
+    return fig
+
+def plot_heatmap_availability_plotly_dark(df, column_name):
+    """
+    Display a heatmap indicating when values in a column are available using Plotly with a dark theme.
+    
+    Parameters:
+    - df: DataFrame containing the data
+    - column_name: Name of the column to check for availability
+    """
+    # Determine data availability
+
+    df['Data_Availability'] = ~df[column_name].isna()
+    daily_availability = df.resample('D', on='Datetime')['Data_Availability'].any()
+
+    # Convert to list for plotting
+    dates = daily_availability.index.tolist()
+    availability = daily_availability.values.tolist()
+
+    # Convert True/False to colors for dark theme
+    colors = ['#303030' if val else 'darkred' for val in availability]
+
+    # Create the bar chart
+    fig = go.Figure()
+
+    fig.add_trace(go.Bar(
+        x=dates,
+        y=[1] * len(dates),
+        marker_color=colors,
+        width=[1000*60*60*24]*len(dates)  # 1 day in milliseconds
+    ))
+
+    # Set layout properties for dark theme
+    fig.update_layout(
+        title=f'Heatmap of {column_name} Data Availability',
+        xaxis_title='Date',
+        yaxis_visible=False,
+        showlegend=False,
+        height=500,
+        plot_bgcolor='#303030',  # dark background for the plot
+        paper_bgcolor='#303030',  # dark background for the surrounding paper
+        font=dict(color='white')  # white font color
+    )
+
+    # daily_availability = df.resample('D', on='Datetime')['Data_Availability'].any()
+    
+    # fig = go.Figure()
+    # fig.add_trace(go.Heatmap(z=daily_availability.values.reshape(1, -1), colorscale='RdBu', showscale=True))
+    # fig.update_layout(title=f'Heatmap of {column_name} Data Availability', xaxis_title='Date', yaxis=dict(tickvals=[]),
+    #                   template="plotly_dark")
+    return fig
+
+
+# Load and preprocess dataset function
+def load_data():
+    ace_data = pd.read_parquet('pages/data/ace/ace_full_data.parquet', engine='pyarrow')
+    ace_data['Datetime'] = pd.to_datetime(ace_data[['Year', 'Day', 'Hour', 'Minute']].assign(MONTH=1).assign(DAY=1)) + \
+                           pd.to_timedelta(ace_data['Day']-1, unit='d') + \
+                           pd.to_timedelta(ace_data['Hour'], unit='h') + \
+                           pd.to_timedelta(ace_data['Minute'], unit='m')
+    ace_data['Vx_Velocity_kms_GSE'].replace(99999.9, np.nan, inplace=True)
+    ace_data['Bz_nT_GSM'].replace(9999.99, np.nan, inplace=True)
+    ace_data['Proton_Density_ncc'].replace(999.99, np.nan, inplace=True)
+    return ace_data
+
+st.write("In this section we will analyze data collected from ace spacecraft. ACE is a NASA spacecraft tasked with monitoring the solar wind. \
+         ACE was launched August 25, 1997 and is currently operating in an orbit close to the L1 Lagrangian point (about 1.5 million km from Earth, towards the Sun).")
+
+st.write("Our dataset contains data from 1998 to 2021. The data is collected every 5 minutes. Let's take a look at the data. First 20 records:")
+
+
+ace_data = load_data()
+
+st.dataframe(ace_data.head(20))
+
+st.write("As you can see, the data is collected every 5 minutes. The data contains information about the varius data collected by the spacecraft. \
+            For exampel - solar wind, the magnetic field and the proton density. Let's take a look at the data statistics.")
+
+st.subheader("Data statistics")
+st.write("In the dataset we have {} observations(rows) and {} features(columns).".format(ace_data.shape[0], ace_data.shape[1]))
+
+st.subheader("What data is relevant for our analysis?")
+st.write("Only couple of features are crucial for our analysis. Only these features \
+          will be used. The features are: **Vx_Velocity_kms_GSE** (Velocity of the solar wind in km/s) \
+         , **Bz_nT_GSM**(Magnetic field in nT) and **Proton_Density_ncc** (Proton density in n/cc).")
+
+
+st.write("First, let's check out the Bz magnetic field data from the ACE spacecraft. This parameter is most important for \
+         our analysis. When Bz is negative, the magnetic reconnection is possible. When Bz is positive, the magnetic \
+            reconnection is not possible. The magnetic reconnection is the main cause of the geomagnetic storms.")
+
+
+st.title("Bz magnetic field data analysis")
+st.subheader("Bz magnetic field data from the ACE spacecraft")
+with st.spinner("Loading..."):
+    fig = plot_timeseries_plotly_dark(ace_data, 'Bz_nT_GSM')
+    st.plotly_chart(fig, use_container_width=True)
+
+st.subheader("Missing data")
+st.write("Let's check out the missing data in the Bz magnetic field data from the ACE spacecraft.")
+with st.spinner("Loading..."):
+    fig = plot_heatmap_availability_plotly_dark(ace_data, 'Bz_nT_GSM')
+    st.plotly_chart(fig, use_container_width=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+st.write("Lets check out now proton density the data from the ACE spacecraft.")
+
+
+
+
+# Compute descriptive statistics
+
+proton_density_stats = ace_data['Proton_Density_ncc'].describe()
+# Display the statistics using the provided template
+col1, col2, col3 = st.columns(3)
+with col1:
+    st.write("**Average Value**")
+    st.write(f"{proton_density_stats['mean']:.2f} n/cc")
+    st.write("**Median Value**")
+    st.write(f"{proton_density_stats['50%']:.2f} n/cc")
+    st.write("**25th Percentile**")
+    st.write(f"{proton_density_stats['25%']:.2f} n/cc")
+with col2:
+    st.write("**Maximum Value**")
+    st.write(f"{proton_density_stats['max']:.2f} n/cc")
+    st.write("**Minimum Value**")
+    st.write(f"{proton_density_stats['min']:.2f} n/cc")
+    st.write("**75th Percentile**")
+    st.write(f"{proton_density_stats['75%']:.2f} n/cc")
+with col3:
+    st.write("**Measurements count**")
+    st.write(f"{int(proton_density_stats['count'])} readings")
+    st.write("**Standard Deviation**")
+    st.write(f"{proton_density_stats['std']:.2f} n/cc")
+    
+# Additional settings for dark theme
+st.markdown("""
+<style>
+body {
+    color: #fff;
+    background-color: #000;
+}
+</style>
+""", unsafe_allow_html=True)
