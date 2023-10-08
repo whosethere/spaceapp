@@ -2,7 +2,7 @@
     "events": [
         {
             "start_date": {"year": "1843", "month": "01"},
-            "media": {"url": "Schwabe sunspot cycle discovery", "credit": ""},
+            "media": {"url": "https://www.jpl.nasa.gov/nmp/st5/IMAGES/sunspots.gif", "credit": ""},
             "text": {
                 "headline": "Schwabe's Sunspot Cycle",
                 "text": "<p>Samuel Heinrich Schwabe discovers the regular sunspot cycle, marking a pivotal moment in solar physics.</p>"
@@ -10,7 +10,7 @@
         },
         {
             "start_date": {"year": "1936", "month": "01"},
-            "media": {"url": "Hannes Alfven magnetohydrodynamics", "credit": ""},
+            "media": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Alfv%C3%A9n%27s_frozen-in_flux_theorem_proof.svg/220px-Alfv%C3%A9n%27s_frozen-in_flux_theorem_proof.svg.png", "credit": ""},
             "text": {
                 "headline": "Alfvén's MHD Concept",
                 "text": "<p>Hannes Alfvén introduces the concept of magnetohydrodynamics (MHD), foundational for understanding plasma behavior in magnetic fields.</p>"
@@ -18,7 +18,7 @@
         },
         {
             "start_date": {"year": "1950", "month": "01"},
-            "media": {"url": "Eugene Parker solar wind", "credit": ""},
+            "media": {"url": "https://static01.nyt.com/images/2022/03/20/obituaries/10parker-obit3/merlin_203936148_9836bae8-eef6-444c-8ecc-e2931111dc9b-superJumbo.jpg?quality=75&auto=webp", "static01.nyt.com": ""},
             "text": {
                 "headline": "Parker's Solar Wind",
                 "text": "<p>Eugene Parker proposes the solar wind concept, hinting at magnetic fields' role in solar-Earth particle interactions.</p>"
@@ -26,7 +26,7 @@
         },
         {
             "start_date": {"year": "1960", "month": "01"},
-            "media": {"url": "magnetic reconnection concept", "credit": ""},
+            "media": {"url": "https://www.frontiersin.org/files/Articles/532404/fphy-08-00089-HTML/image_m/fphy-08-00089-g001.jpg", "frontiersin.org": ""},
             "text": {
                 "headline": "Magnetic Reconnection Coined",
                 "text": "<p>The term 'magnetic reconnection' is introduced, describing how magnetic field lines can break and reconnect.</p>"
@@ -34,7 +34,7 @@
         },
         {
             "start_date": {"year": "1970", "month": "01"},
-            "media": {"url": "Earth magnetosphere reconnection", "credit": ""},
+            "media": {"url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Magnetic-reconnection-zones-in-the-earth%27s-magnetosphere-MMS-fr-.png", "wikimedia.org": ""},
             "text": {
                 "headline": "Reconnection in Magnetosphere",
                 "text": "<p>Reconnection sites in Earth's magnetosphere are confirmed through satellite observations.</p>"
@@ -42,7 +42,7 @@
         },
         {
             "start_date": {"year": "1980", "month": "01"},
-            "media": {"url": "magnetic flux ropes", "credit": ""},
+            "media": {"url": "https://eos.org/wp-content/uploads/2018/03/2017JA024971-Figure-11.jpg", "eos.org": ""},
             "text": {
                 "headline": "Magnetic Flux Ropes Detected",
                 "text": "<p>Scientists detect magnetic flux ropes, twisted magnetic structures associated with reconnection, in Earth's magnetotail.</p>"
@@ -50,7 +50,7 @@
         },
         {
             "start_date": {"year": "1994", "month": "01"},
-            "media": {"url": "WIND satellite", "credit": ""},
+            "media": {"url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Wind_probe.jpg", "wikimedia.org": ""},
             "text": {
                 "headline": "WIND Satellite Launch",
                 "text": "<p>The WIND satellite is launched to study the solar wind's influence on Earth's magnetosphere.</p>"
@@ -58,7 +58,7 @@
         },
         {
             "start_date": {"year": "1997", "month": "01"},
-            "media": {"url": "ACE satellite", "credit": ""},
+            "media": {"url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/ACE_mission_logo.png", "wikimedia.org": ""},
             "text": {
                 "headline": "ACE Satellite Insights",
                 "text": "<p>ACE (Advanced Composition Explorer) satellite is launched, providing insights into solar particles and magnetic fields.</p>"
@@ -66,7 +66,7 @@
         },
         {
             "start_date": {"year": "1999", "month": "01"},
-            "media": {"url": "SOHO satellite solar flares", "credit": ""},
+            "media": {"url": "https://soho.nascom.nasa.gov/spaceweather/lenticular/20031202_c2_EIT304.gif", "nascom.nasa.gov": ""},
             "text": {
                 "headline": "SOHO Reveals Solar Flares",
                 "text": "<p>The SOHO satellite provides images of solar flares, shedding light on magnetic reconnection on the Sun.</p>"
@@ -74,7 +74,7 @@
         },
         {
             "start_date": {"year": "2008", "month": "01"},
-            "media": {"url": "THEMIS mission", "credit": ""},
+            "media": {"url": "https://www.photonics.com/images/Web/Articles/2007/1/15/THEMIS.jpg", "photonics.com": ""},
             "text": {
                 "headline": "THEMIS Mission Insights",
                 "text": "<p>THEMIS mission provides evidence of magnetic reconnection causing substorms in Earth's magnetosphere.</p>"
@@ -82,7 +82,7 @@
         },
         {
             "start_date": {"year": "2015", "month": "01"},
-            "media": {"url": "DSCOVR satellite", "credit": ""},
+            "media": {"url": "https://www.universetoday.com/wp-content/uploads/2015/01/DSCOVR.png", "universetoday.com": ""},
             "text": {
                 "headline": "DSCOVR Watches Space Weather",
                 "text": "<p>DSCOVR (Deep Space Climate Observatory) satellite is launched, observing real-time space weather conditions.</p>"
@@ -90,7 +90,7 @@
         },
         {
             "start_date": {"year": "2010", "month": "01"},
-            "media": {"url": "MMS mission", "credit": ""},
+            "media": {"url": "https://upload.wikimedia.org/wikipedia/commons/5/52/Magnetospheric_Multiscale_Mission_spacecraft_model.png", "wikimedia.org": ""},
             "text": {
                 "headline": "MMS Mission Launch",
                 "text": "<p>MMS (Magnetospheric Multiscale) mission is launched to deeply study reconnection.</p>"
@@ -98,7 +98,7 @@
         },
         {
             "start_date": {"year": "2016", "month": "01"},
-            "media": {"url": "electron-scale physics of magnetic reconnection", "credit": ""},
+            "media": {"url": "https://www.researchgate.net/publication/361656882/figure/fig1/AS:11431281176566925@1690203028991/a-e-Time-evolution-of-an-electron-diffusion-region-EDR-from-a-fully-kinetic.png", "researchgate.net": ""},
             "text": {
                 "headline": "MMS Reveals Electron-Scale Physics",
                 "text": "<p>MMS captures high-res data, revealing electron-scale physics of magnetic reconnection.</p>"
@@ -106,7 +106,7 @@
         },
         {
             "start_date": {"year": "2020", "month": "01"},
-            "media": {"url": "3D modeling magnetic reconnection", "credit": ""},
+            "media": {"url": "https://scx2.b-cdn.net/gfx/news/2022/new-theory-explains-my.jpg", "scx2.b-cdn.net": ""},
             "text": {
                 "headline": "3D Modeling Breakthrough",
                 "text": "<p>Advances in tech allow 3D modeling of magnetic reconnection events.</p>"
