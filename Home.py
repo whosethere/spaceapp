@@ -17,55 +17,32 @@ from graph_builder import *
 from streamlit_player import st_player
 
 
-dark_theme_css = """
-/* General Background and Text Color */
-.tl-timeline, .tl-storyslider {
-    background-color: #2c2c2c; /* Dark background color */
-    color: #e0e0e0; /* Light text color */
-}
-
-/* Navigation Buttons */
-.tl-slidenav-previous, .tl-slidenav-next {
-    background-color: #3a3a3a; /* Slightly lighter than the general background for distinction */
-    color: #f5f5f5; /* Lighter text color for better visibility */
-}
-
-.tl-slidenav-icon {
-    background-color: #4a4a4a; /* Even slightly lighter shade for the icon's background */
-}
-
-/* Navigation Content Container */
-.tl-slidenav-content-container {
-    background-color: #3a3a3a;
-    border: 1px solid #4a4a4a; /* Border to give some definition */
-}
-
-/* Titles and Descriptions inside Navigation */
-.tl-slidenav-title, .tl-slidenav-description {
-    color: #f5f5f5;
-}
-
-/* Slider Container */
-.tl-slider-container-mask, .tl-slider-container {
-    background-color: #2c2c2c;
-}
-"""
-
 st.set_page_config(page_title='Magnetic reconnection explained' ,layout="wide",page_icon='')# your CSS string)
 # st.sidebar.markdown(info['Stackoverflow_flair'],unsafe_allow_html=True)
 # st.subheader('Summary')
 # st.write(info['Brief'])
-st.markdown('<style>{}</style>'.format(dark_theme_css), unsafe_allow_html=True)
+# st.markdown('<style>{}</style>'.format(dark_theme_css), unsafe_allow_html=True)
+# st.header('Magnetic Reconnection: Beauty, Power, and Disruption')
+# st.write("Magnetic reconnection is a phenomenon where magnetic field lines intersect and rearrange themselves in space. This process is vital in astrophysics, playing a role in solar storms that can produce beautiful auroras on Earth. However, these storms can also disrupt satellites, navigation systems, and power grids. Thus, understanding magnetic reconnection helps us predict and mitigate the impact of solar storms on our technology.")
+markdown_text = """
+## Magnetic Reconnection: Beauty, Power, and Disruption
+
+**Magnetic reconnection** is a phenomenon where **magnetic field lines** intersect and rearrange themselves in space. This process is vital in **astrophysics**, playing a role in **solar storms** that can produce beautiful **auroras** on Earth. However, these storms can also **disrupt satellites, navigation systems, and power grids**. Thus, understanding magnetic reconnection helps us **predict and mitigate** the impact of solar storms on our technology.
+"""
+
+
+st.markdown(markdown_text)
+markdown_text = """
+## Journey Through Time: Unraveling the Secrets of Magnetic Reconnection
+
+Dive into the captivating history of magnetic reconnection, a cornerstone in understanding our universe. Explore our timeline to witness the milestones and discoveries that shaped modern astrophysics. Don't miss out on this cosmic journey!
+"""
+st.markdown(markdown_text)
+
 
 st.subheader('Events Timeline📅')
 # Sample custom CSS for streamlit-timeline in dark mode
 # Custom CSS for dark theme styling of the identified classes
-
-
-
-
-
-
 
 
 with st.spinner(text="Building line"):
@@ -73,21 +50,42 @@ with st.spinner(text="Building line"):
         data = f.read()
         timeline(data, height=500)
 
+def generate_link(tag):
+    # W tym przypadku generujemy link do wyszukiwania Google dla danego tagu
+    base_url = "https://www.google.com/search?q="
+    return f"[{tag}]({base_url + tag})"
 
 st.subheader('Concepts⚒️')
-def phrases_tab():
-    rows,cols = len(info['tags'])//skill_col_size,skill_col_size
-    skills = iter(info['tags'])
-    if len(info['tags'])%skill_col_size!=0:
-        rows+=1
-    for x in range(rows):
-        columns = st.columns(skill_col_size)
-        for index_ in range(skill_col_size):
-            try:
-                columns[index_].button(next(skills))
-            except:
-                break
 
 
-with st.spinner(text=" Loading section..."):
-    phrases_tab()
+tags = [
+    'IMF (Interplanetary Magnetic Field)',
+    'Solar Wind',
+    'Aurora Borealis',
+    'Magnetosphere',
+    'Magnetic Flux',
+    'Solar Flares',
+    'Coronal Mass Ejections (CMEs)',
+    'Magnetic Shear',
+    'Plasma Physics'
+]
+
+
+st.title("Interested? Explore these deeper topics.")
+
+
+# Dla każdych trzech tagów, tworzymy nowy rząd z trzema kolumnami
+for i in range(0, len(tags), 3):
+    columns = st.columns(3)
+    for j in range(3):
+        if i + j < len(tags):  # Upewniamy się, że nie przekroczyliśmy listy tagów
+            tag = tags[i + j]
+            link = f"https://www.google.com/search?q={tag}"
+            columns[j].markdown(f"""
+            <div style="background-color: #1E1E1E; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                <a href="{link}" target="_blank" style="text-decoration: none; color: #FFF;">
+                    🔗 {tag}
+                </a>
+            </div>
+            """, unsafe_allow_html=True)
+
