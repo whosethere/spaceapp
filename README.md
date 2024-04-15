@@ -1,3 +1,5 @@
+<h1 align="center">ACE Satellite Data Analysis</h1>
+
 ```python
 import pandas as pd
 import numpy as np
@@ -112,90 +114,6 @@ df[columns_of_interest].head(20)
     </tr>
     <tr>
       <th>5</th>
-      <td>9999.99</td>
-      <td>99999.9</td>
-      <td>999.99</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>9999.99</td>
-      <td>99999.9</td>
-      <td>999.99</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>9999.99</td>
-      <td>99999.9</td>
-      <td>999.99</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>9999.99</td>
-      <td>99999.9</td>
-      <td>999.99</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>9999.99</td>
-      <td>99999.9</td>
-      <td>999.99</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>9999.99</td>
-      <td>99999.9</td>
-      <td>999.99</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>9999.99</td>
-      <td>99999.9</td>
-      <td>999.99</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>9999.99</td>
-      <td>99999.9</td>
-      <td>999.99</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>9999.99</td>
-      <td>99999.9</td>
-      <td>999.99</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>9999.99</td>
-      <td>99999.9</td>
-      <td>999.99</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>9999.99</td>
-      <td>99999.9</td>
-      <td>999.99</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>9999.99</td>
-      <td>99999.9</td>
-      <td>999.99</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>9999.99</td>
-      <td>99999.9</td>
-      <td>999.99</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>9999.99</td>
-      <td>99999.9</td>
-      <td>999.99</td>
-    </tr>
-    <tr>
-      <th>19</th>
       <td>9999.99</td>
       <td>99999.9</td>
       <td>999.99</td>
