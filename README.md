@@ -1,4 +1,4 @@
-![](https://hit.yhype.me/github/profile?user_id=36974229)
+
 <h1 align="center">ACE Satellite Data Analysis</h1>
 
 ```python
