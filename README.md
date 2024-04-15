@@ -210,7 +210,6 @@ We can see missing values in the data(high values only with nines).
 It can be for a variety of reasons, for example, the spacecraft was not working at that time.
 First we need to chage this values for NaN - not a number format. It will prevent our analysis from strange results as values like that are clearly not real.
 
-
 ```python
 # Explicitly replace the identified anomalous values with NaN
 df['Bz_nT_GSM'] = df['Bz_nT_GSM'].replace(9999.99, np.nan)
